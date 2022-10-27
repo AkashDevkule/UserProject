@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 		
 		boolean isIdPresent= userRepo.findById(userDto.getUserId()).isPresent();
 		
-		if (!isIdPresent) {
+		if (!isIdPresent && !userRepo.findByUserEmail(userDto.getUserEmail()).isPresent()) {
 			if (!userRepo.existsById(userDto.getUserId())) {
 				
 				UserEntity newUser= new UserEntity();
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 				throw new UserException("UserService.USER_ID_EXITS");
 			}
 		}else {
-			throw new UserException("UserService.USER_ID_ALREADY_PRESENT");
+			throw new UserException("UserService.USER_ID_OR_EMAIL_ALREADY_PRESENT");
 		}
 		
 	}
