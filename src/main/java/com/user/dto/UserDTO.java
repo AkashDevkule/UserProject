@@ -19,6 +19,8 @@ public class UserDTO {
 	private String userEmail;
 	
 	@NotNull(message = "{user.mobno.absent}")
+//	@Size(min = 10, max=10, message = "{invalid.mobno.size}")
+//	@Pattern(regexp = "[7-9][0-9]{9}",message = "{invalid.mobno.size}")
 	private Long userMobNo;
 	
 	
