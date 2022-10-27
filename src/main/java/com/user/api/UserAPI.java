@@ -28,9 +28,9 @@ public class UserAPI {
 	private Environment env;
 
 	@GetMapping("/")
-	public void getHomePage() throws UserException {
+	public String getHomePage() throws UserException {
 
-		System.out.println("<h3> WELCOME TO HOME PAGE</h3>");
+	return ("<h3> WELCOME TO HOME PAGE</h3>");
 
 	}
 
