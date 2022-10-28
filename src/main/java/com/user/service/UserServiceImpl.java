@@ -19,8 +19,9 @@ public class UserServiceImpl implements UserService {
 		
 		boolean isIdPresent= userRepo.findById(userDto.getUserId()).isPresent();
 		
-		if (!isIdPresent && !userRepo.findByUserEmail(userDto.getUserEmail()).isPresent()) {
-			if (!userRepo.existsById(userDto.getUserId())) {
+		if (!isIdPresent || !userRepo.existsById(userDto.getUserId())) {
+			if (!userRepo.findByUserEmail(userDto.getUserEmail()).isPresent()) {
+				if(!userRepo.findByUserMobNo(userDto.getUserMobNo()).isPresent()) {		
 				
 				UserEntity newUser= new UserEntity();
 				newUser.setUserId(userDto.getUserId());
@@ -30,11 +31,14 @@ public class UserServiceImpl implements UserService {
 				
 				userRepo.save(newUser);
 				System.out.println("Added Successfully: "+newUser.toString());
+				}else {
+					throw new UserException("UserService.USER_MOBILE_NUMBER_EXITS");
+				}
 			}else {
-				throw new UserException("UserService.USER_ID_EXITS");
+				throw new UserException("UserService.USER_EMAIL_ALREADY_PRESENT");
 			}
 		}else {
-			throw new UserException("UserService.USER_ID_OR_EMAIL_ALREADY_PRESENT");
+			throw new UserException("UserService.USER_ID_EXITS");
 		}
 		
 	}
