@@ -7,6 +7,7 @@ import javax.validation.constraints.Pattern;
 public class UserDTO {
 	
 	@NotNull(message = "{user.id.absent}")
+//	@Pattern(regexp = "([1-9])",message = "{invalid.id.format}")
 	private Integer userId;
 	
 	@NotNull(message = "{user.name.absent}")
@@ -15,12 +16,12 @@ public class UserDTO {
 	
 	@NotNull(message = "{user.email.absent}")
 	@Email
-	@Pattern(regexp = "[a-zA-Z0-9._]+@[a-zA-Z]{2,}\\.[a-zA-Z][a-zA-Z.]+", message = "{invalid.email.format}")
+	@Pattern(regexp = "([a-zA-Z0-9._]+@[a-zA-Z]{2,}\\.[a-zA-Z][a-zA-Z.]+)", message = "{invalid.email.format}")
 	private String userEmail;
 	
 	@NotNull(message = "{user.mobno.absent}")
 //	@Size(min = 10, max=10, message = "{invalid.mobno.size}")
-//	@Pattern(regexp = "[7-9][0-9]{9}",message = "{invalid.mobno.size}")
+//	@Pattern(regexp = "\\d{10}",message = "{invalid.mobno.size}")
 	private Long userMobNo;
 	
 	
