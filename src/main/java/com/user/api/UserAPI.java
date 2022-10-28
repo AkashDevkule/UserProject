@@ -43,7 +43,7 @@ public class UserAPI {
 			return new ResponseEntity<>(createdMessage, HttpStatus.OK);
 
 		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, env.getProperty("UserAPI.ID_ALREADY_PRESENT"));
+			throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, env.getProperty("UserAPI.USER_ALREADY_PRESENT"));
 		}
 	}
 }
