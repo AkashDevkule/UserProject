@@ -10,5 +10,9 @@ import com.user.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
+	//access modifier Optional<Table Name> findByColumnName(parameter) 
+	
 	public Optional<UserEntity> findByUserEmail(String email);
+	
+	public Optional<UserEntity> findByUserMobNo(Long mobNo); 
 }
